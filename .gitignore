@@ -99,3 +99,6 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+#Files used in the project
+/files
