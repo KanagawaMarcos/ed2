@@ -1,4 +1,3 @@
-import sys
 import utilities
 from SelectionSort import SelectionSort
 
