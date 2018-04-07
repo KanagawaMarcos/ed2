@@ -7,10 +7,11 @@ filename = 'deleteme.teste.txt'
 
 sorting_algorithm_choosen = SelectionSort()
 
-#array = utilities.convert_file_to_array(filename)
-dictionary = utilities.convert_file_to_dictionary(filename)
+array = utilities.convert_file_to_array(filename)
 
-sorting_algorithm_choosen.sort(dictionary)
+sorting_algorithm_choosen.sort_array(array)
 
 print('----------------------')
-print(dictionary)
+print(array)
+
+dictionary = utilities.convert_file_to_dictionary(filename)
