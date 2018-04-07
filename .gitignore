@@ -107,7 +107,7 @@ ENV/
 3 terceira entrada.txt
 4 entrada.txt
 5 entrada.txt
-*teste.txt
+*.teste.txt
 
 
 
