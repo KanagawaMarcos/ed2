@@ -3,7 +3,7 @@ from SelectionSort import SelectionSort
 
 
 filename = '1 primeira entrada.txt' 
-filename = 'deleteme.teste.txt' 
+#filename = 'deleteme.teste.txt' 
 
 sorting_algorithm_choosen = SelectionSort()
 

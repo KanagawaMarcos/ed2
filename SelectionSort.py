@@ -23,6 +23,9 @@ class SelectionSort():
 
 					array[i],array[j] = array[j],array[i]
 
+					#print('swaping words: ' + str(array[i]) + ' <- -> ' + str(array[j]) + ' // some info: i = ' + str(i) + '| j = ' + str(j) + '| array_len = ' + str(len(array)))
+					print('swaping words: ' + str(array[j]) + ' <- -> ' + str(array[i]) )
+
 
 	# Check which word comes first in alphabetical order
 	def __this_word_comes_first_than_that(self, this, that, minimum_word_size=4):
@@ -33,13 +36,13 @@ class SelectionSort():
 
 			# Which one has the greater size?
 			
-			greater_size = len(this)
-			if len(that) > greater_size:
-				greater_size = len(that)
+			smaller_size = len(this)
+			if len(that) < smaller_size:
+				smaller_size = len(that)
 
 			# Return the True if "this" comes first, otherwise return False
 			
-			for current_letter in range(greater_size):
+			for current_letter in range(smaller_size):
 
 				if this[current_letter].lower() > that[current_letter].lower():
 					return True
