@@ -15,7 +15,8 @@ class SelectionSort():
 		pass
 
 def convert_file_to_array(filename):
+	array = []
 	with open(filename) as f:
 			for line in f:
-				for word in line:
-					print(word)
+				array += line.split()
+	print(array)			

@@ -1,7 +1,7 @@
 import sys
 import algorithms
 
-filename = '2 segunda entrada.txt' 
+filename = '1 primeira entrada.txt' 
 
 sorting_algorithm_choosen = algorithms.InsertSort()
 sorting_algorithm_choosen.sort(filename)
