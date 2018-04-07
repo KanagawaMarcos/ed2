@@ -11,7 +11,7 @@ class SelectionSort():
 	def sort(self, array):
 		pass
 
-	def this_comes_first_than_that(self, this, that):
+	def __this_comes_first_than_that(self, this, that):
 		pass
 
 def convert_file_to_array(filename):
@@ -19,4 +19,4 @@ def convert_file_to_array(filename):
 	with open(filename) as f:
 			for line in f:
 				array += line.split()
-	print(array)			
+			
