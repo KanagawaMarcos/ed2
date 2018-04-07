@@ -1,11 +1,14 @@
 import sys
-import algorithms
+import utilities
+from SelectionSort import SelectionSort
+
 
 filename = '1 primeira entrada.txt' 
+filename = 'deleteme.teste.txt' 
 
-sorting_algorithm_choosen = algorithms.SelectionSort()
+sorting_algorithm_choosen = SelectionSort()
 
-array = algorithms.convert_file_to_array(filename)
+array = utilities.convert_file_to_array(filename)
 
 sorting_algorithm_choosen.sort(array)
 
