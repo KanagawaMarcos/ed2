@@ -23,9 +23,6 @@ class SelectionSort():
 
 					array[i],array[j] = array[j],array[i]
 
-					#print('swaping words: ' + str(array[i]) + ' <- -> ' + str(array[j]) + ' // some info: i = ' + str(i) + '| j = ' + str(j) + '| array_len = ' + str(len(array)))
-					print('swaping words: ' + str(array[j]) + ' <- -> ' + str(array[i]) )
-
 
 	# Check which word comes first in alphabetical order
 	def __this_word_comes_first_than_that(self, this, that, minimum_word_size=4):
