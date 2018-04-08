@@ -1,3 +1,5 @@
+import utilities
+
 class SelectionSort():
 
 	# Sort an array using Selection Sort
@@ -37,7 +39,7 @@ class SelectionSort():
 				this = dictionary[cur_main_index]
 				that = dictionary[possible_swap_index]
 
-				if self.__this_word_comes_first_than_that(this, that):
+				if utilities.this_word_comes_first_than_that(this,that):
 
 					# Swap the words
 
@@ -46,25 +48,3 @@ class SelectionSort():
 
 					dictionary[i],dictionary[j] = dictionary[j],dictionary[i]
 
-
-	# Check which word comes first in alphabetical order
-	def __this_word_comes_first_than_that(self, this, that, minimum_word_size=4):
-
-		# If both words has the minimum amout of letters or more
-
-		if(len(this) >= minimum_word_size and len(that) >= minimum_word_size):
-
-			# Which one has the greater size?
-			
-			smaller_size = len(this)
-			if len(that) < smaller_size:
-				smaller_size = len(that)
-
-			# Return the True if "this" comes first, otherwise return False
-			
-			for current_letter in range(smaller_size):
-
-				if this[current_letter].lower() > that[current_letter].lower():
-					return True
-				elif this[current_letter].lower() < that[current_letter].lower():
-					return False
