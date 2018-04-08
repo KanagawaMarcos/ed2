@@ -1,3 +1,5 @@
+import utilities 
+
 Class ShellSort(object){
 	
 		def shell(self, array):
