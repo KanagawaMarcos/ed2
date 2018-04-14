@@ -110,5 +110,7 @@ ENV/
 5 entrada.txt
 *.teste.txt
 
+# Markdown preview
+*.html
 
 
