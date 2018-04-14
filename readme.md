@@ -3,14 +3,18 @@
 
 #### Primeira Prova
 * **Selection Sort**
-	* Seleciona o menor elemento após o atual e troca ambos de lugar.
+	* O(n²)
 	* Não é estável
+	* Seleciona o menor elemento após o atual e troca ambos de lugar.
 	* A ordenação inicial do vetor não altera o custo de execução.
 * **Insetion Sort**
-	* Pega o menor item após o atual e o insere na posição correta antes do atual.
+	* O(n²)
 	* É estável
+	* Pega o menor item após o atual e o insere na posição correta antes do atual.
 	* Recomendado para arquivos semi ordenados
 * **Shell Sort**
+	* O(??)
+	* Não é estável
 	* É uma variação do Insertion Sort
 	* Define uma distancia inicial sendo metade do arquivo, compara e troca elementos com essa distancia, por fim divide a distancia pela metade recomeça. 
 	* Quando a distancia é igual à 1 o algoritmo executa um Insetion Sort
@@ -18,6 +22,10 @@
 	* Recomendado para arquivos de tamanhos moderados
 	* Implementação dele é simples
 	* Sensivel à ordem original do arquivo
+* **Merge Sort**
+	* O(n\*Log(n))
+	* É estável
+	* Usa memória auxíliar do tamanho do vetor inicial. (Out place)
 * **Ordenação estável**
 	* Um algoritmo de ordenação é considerado estável quando ele não altera a posição relativa de itens com chaves iguais.
 	* Insertion Sort
