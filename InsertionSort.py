@@ -16,7 +16,9 @@ class InsertionSort():
 			this = array[current_backwards-1]
 			that = array[current_backwards]
 
+			# Do it whithout going out of the array boundery
 			while current_backwards > 0 and utilities.this_word_comes_first_than_that(this,that):
+					
 					# Swap the words
 
 					i = current_backwards
@@ -24,6 +26,7 @@ class InsertionSort():
 
 					array[i],array[j] = array[j],array[i]
 
+					# Update their indexes to go even futher in the array
 					current_backwards -= 1
 
 					this = array[current_backwards-1]
