@@ -1,4 +1,5 @@
 # Estou usando array, mas, é possível alterar pra hash 
+import utilities
 
 Class Quick(object){
 	
