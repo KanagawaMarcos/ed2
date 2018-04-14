@@ -2,11 +2,11 @@
 
 
 #### Primeira Prova
-* Selection Sort
+* **Selection Sort**
 	* Seleciona o menor elemento após o atual e troca ambos de lugar.
 	* Não é estável
 	* A ordenação inicial do vetor não altera o custo de execução.
-* Insetion Sort
+* **Insetion Sort**
 	* Pega o menor item após o atual e o insere na posição correta antes do atual.
 	* É estável
 	* Recomendado para arquivos semi ordenados
