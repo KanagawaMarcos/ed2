@@ -25,7 +25,17 @@
 * **Merge Sort**
 	* O(n\*Log(n))
 	* É estável
-	* Usa memória auxíliar do tamanho do vetor inicial. (Out place)
+	* Out place
+* **Quick Sort**
+	* Melhor/Médio caso O(n\*Log(n))
+	* Não é estável
+	* Pior caso O(n²)
+	* O custo é igual O(n\*Log(n)), independente da entrada.
+	* Precisa de pouca memória
+	* Out place
+* **Heap Sort**
+	* O custo é igual O(n\*Log(n)), independente da entrada.
+
 * **Ordenação estável**
 	* Um algoritmo de ordenação é considerado estável quando ele não altera a posição relativa de itens com chaves iguais.
 	* Insertion Sort
