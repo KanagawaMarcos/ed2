@@ -1,0 +1,7 @@
+- **Insertion Sort**
+	- O(n²)
+	- In place O(1)
+- **Merge Sort**
+	- O(n\*Log(n))
+	- Out place O(n)
+- **
