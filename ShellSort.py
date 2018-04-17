@@ -1,6 +1,6 @@
 import utilities 
 
-Class ShellSort(object){
+class ShellSort():
 	
 		def shell(self, array):
 				
@@ -31,4 +31,4 @@ Class ShellSort(object){
 				return array
 		
 		
-	}
+	
