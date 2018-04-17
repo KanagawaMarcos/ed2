@@ -1,7 +1,7 @@
 # Estou usando array, mas, é possível alterar pra hash 
 import utilities
 
-Class Quick(object){
+class Quick(object):
 	
 
 	def particiona(self, array, begin, end):
