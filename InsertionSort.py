@@ -1,6 +1,14 @@
+
 import utilities
 
 class InsertionSort():
+
+	# Sort a dictionary using Selection Sort
+	def sort_dictionary(self, dictionary):
+
+		# Loop through the entire array
+		for key in dictionary:
+			pass
 
 	# Sort an array using Selection Sort
 	def sort_array(self, array):

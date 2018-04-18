@@ -2,7 +2,7 @@ import utilities
 
 class ShellSort():
 	
-	def shell(self, array):
+	def sort_array(self, array):
 			
 		size=len(array)
 		h=1

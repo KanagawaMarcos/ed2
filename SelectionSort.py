@@ -16,7 +16,7 @@ class SelectionSort():
 				this = array[cur_main_index]
 				that = array[possible_swap_index]
 
-				if self.__this_word_comes_first_than_that(this, that):
+				if utilities.this_word_comes_first_than_that(this, that):
 
 					# Swap the words
 

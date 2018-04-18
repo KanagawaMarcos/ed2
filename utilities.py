@@ -1,8 +1,11 @@
+# -*- coding: utf-8 -*-
+
 import os
 
 def convert_file_to_array(filename):
 	array = []
-
+	
+	# Open the file an separete each word in an array element
 	with open(filename) as file:
 		for line in file:
 			array += line.split()
@@ -12,9 +15,7 @@ def convert_file_to_array(filename):
 def convert_file_to_dictionary(filename):
 	array = []
 
-	with open(filename) as file:
-		for line in file:
-			array += line.split()
+	array = convert_file_to_array(filename)
 
 	# Key = Word | Value = Occurrence
 	dictionary = {}
@@ -26,6 +27,7 @@ def convert_file_to_dictionary(filename):
 
 
 	return dictionary
+
 
 # Check which word comes first in alphabetical order
 def this_word_comes_first_than_that(this, that, minimum_word_size=4):
