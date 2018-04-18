@@ -3,13 +3,16 @@ import utilities
 from SelectionSort import SelectionSort
 from InsertionSort import InsertionSort
 from HeapSort import HeapSort
+from BinaryInsertionSort import BinaryInsertionSort
+
 
 
 
 filename = '1 primeira entrada.txt'
 #filename = 'deleteme.teste.txt'
 
-sorting_algorithm_choosen = SelectionSort()
+sorting_algorithm_choosen = BinaryInsertionSort()
+#sorting_algorithm_choosen = SelectionSort()
 #sorting_algorithm_choosen = InsertionSort()
 #sorting_algorithm_choosen = HeapSort()
 
@@ -27,8 +30,7 @@ array = list(dictionary.keys())
 sorting_algorithm_choosen.sort_array(array)
 
 
-
-print('----------------------')
 for word in array:
 	print(word)
-
+print('----------------------\n')
+print('tamanho: '+str(len(array)))
