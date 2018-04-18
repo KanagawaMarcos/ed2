@@ -2,6 +2,8 @@
 
 import os
 
+from removedor_de_acentos import remover_acentos
+
 def convert_file_to_array(filename):
 	array = []
 	
@@ -20,10 +22,11 @@ def convert_file_to_dictionary(filename):
 	# Key = Word | Value = Occurrence
 	dictionary = {}
 	for word in array:
-		if word in dictionary:
-			dictionary[word] += 1
-		else:
-			dictionary[word] = 1
+		if len(word) >= 4:
+			if word in dictionary:
+				dictionary[word] += 1
+			else:
+				dictionary[word] = 1
 
 
 	return dictionary
@@ -46,7 +49,7 @@ def this_word_comes_first_than_that(this, that, minimum_word_size=4):
 		
 		for current_letter in range(smaller_size):
 
-			if this[current_letter].lower() > that[current_letter].lower():
+			if remover_acentos(this)[current_letter].lower() > remover_acentos(that)[current_letter].lower():
 				return True
-			elif this[current_letter].lower() < that[current_letter].lower():
+			elif remover_acentos(this)[current_letter].lower() < remover_acentos(that)[current_letter].lower():
 				return False

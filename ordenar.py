@@ -16,18 +16,19 @@ sorting_algorithm_choosen = SelectionSort()
 dictionary = utilities.convert_file_to_dictionary(filename)
 
 
-
 #array = utilities.convert_file_to_array(filename)
-array = dictionary.keys()
+array = list(dictionary.keys())
 
+#array_occurrence = []
+
+#for word in array:
+#	array.append(dictionary[word])
 
 sorting_algorithm_choosen.sort_array(array)
 
-print('----------------------')
-print(array)
 
-#i = 1
-#for key in dictionary:
-#	i+=1
-#	print(key + ' | ocorrências:'+ str(dictionary[key]))
+
+print('----------------------')
+for word in array:
+	print(word)
 
