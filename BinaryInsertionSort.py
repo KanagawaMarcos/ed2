@@ -36,7 +36,7 @@ class BinaryInsertionSort():
 		if left > right:
 			return left
 
-		middle = int((left + (right-1))/2)
+		middle = (left + right)//2
 
 		# If it's smaller, the value is in the left subarray
 		if array[middle] < value:
