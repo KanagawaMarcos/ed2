@@ -12,15 +12,14 @@ class ShellSort():
 
                                 while h>=1:
                                                 
-                                                print h
-                                                print '\n'
+                                                
                                                 i=0
                                                 j=h
-                                                print'entrou'
+                                               
                                                 #Percorre a array nas posiÃ§Ãµes i e j, na distÃ¢ncia h atÃ© o final do vetor
                                                 while j<size and h<>0:
                                                                 #Testa para ver se a palavra no array[j] vem antes do array[i]
-                                                                if utilities.this_word_comes_first_than_that(array[i],array[j])
+                                                                if utilities.this_word_comes_first_than_that(array[j],array[i])
                                                                                 
                                                                                 #Troca as palavras da array
                                                                                 array[i],array[j]=array[j],array[i]
@@ -28,7 +27,7 @@ class ShellSort():
                                                                 #Movimenta as variaveis i e j
                                                                 j=j+h
                                                                 i=i+h
-                                                                print j
+                                                               
                                                 #Atualiza o valor de h             
                                                 h=(h-1)/3
                                                 
