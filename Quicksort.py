@@ -27,14 +27,14 @@ class Quick():
                                 
                                         #Testa se a palavra em left vem antes da palavra em pivÃ´
                                         
-                                        if array[i]<pivo:
+                                        if utilities.this_word_comes_first_than_that(array[i],pivo):
                                                         i=i+1
                                         else:
                                                         while loop_j==0:
                                                                         #Atribui a variavÃ©l right a palavra em array[j]
                                                                         
                                                                         #Testa se a palavra no pivÃ´ vem antes da palavra em right
-                                                                        if pivo<array[j]:
+                                                                        if utilities.this_word_comes_first_than_that(pivo,array[j]):
                                                                                         j=j-1
                                                                         else:
                                                                                         #Troca as palavras no array nas posiÃ§Ãµes i e j
