@@ -152,7 +152,7 @@ class HeapSort(AbstractSortClass):
 			start_time = time.time()
 
 			# Sort this array
-			self.sort_array(array, alphabetical=True)
+			self.sort_array(array)
 
 			# Calculate the time it took to sort
 			self.execution_time = time.time()-start_time
@@ -180,7 +180,7 @@ class HeapSort(AbstractSortClass):
 			start_time = time.time()
 
 			# Sort this occurrence array
-			self.sort_array(occurrences, alphabetical=False)
+			self.sort_array(occurrences)
 
 			# Calculate the time it took to sort
 			self.execution_time = time.time()-start_time
@@ -191,45 +191,56 @@ class HeapSort(AbstractSortClass):
 			# And it's execution time
 			print('Execution Time (Seconds): ' + str(self.execution_time))
 
-	def heapify(self, arr, n, i, alphabetical=True):
-		largest = i  # Initialize largest as root
-		l = 2 * i + 1     # left = 2*i + 1
-		r = 2 * i + 2     # right = 2*i + 2
-	 
-		# See if left child of root exists and is
-		# greater than root
-		if alphabetical :
+	def build_max_heap(self, array,array_size):
+		for i in range(array_size, -1, -1):
+			self.heapify(array, array_size, i)
 
-			if l < n and utilities.this_word_comes_first_than_that(arr[l],arr[i]) :
-				largest = l
-		 
-			# See if right child of root exists and is
-			# greater than root
-			if r < n and utilities.this_word_comes_first_than_that(arr[r],arr[largest]):
-				largest = r
-		else:
-			if l < n and arr[i] < arr[l]:
-				largest = l
-		 
-			# See if right child of root exists and is
-			# greater than root
-			if r < n and arr[largest] < arr[r]:
-				largest = r
+	def heapify(self, array, array_size, i, alphabetical=True):
+		# Supose that the root is the largest (We check this later)
+		largest = i  
+		left_index = 2 * i + 1     
+		right_index = 2 * i + 2     
+	 
+		# Check if we're inside the array boundery
+		if left_index < array_size or right_index < array_size:
+
+			# Check if it's an integer or a word
+			if type(array[i]) is not int:
+
+				# See if left child of root exists and is greater than it's parent
+				if left_index < array_size and utilities.this_word_comes_first_than_that(array[left_index],array[i]) :
+					largest = left_index
+			 
+				# See if right child of root exists and is greater than it's parent
+				if right_index < array_size and utilities.this_word_comes_first_than_that(array[right_index],array[largest]):
+					largest = right_index
+			else:
+
+				# See if left child of root exists and is greater than it's parent
+				if left_index < array_size and array[i] < array[left_index]:
+					largest = left_index
+				
+				# See if right child of root exists and is greater than it's parent
+				if right_index < array_size and array[largest] < array[right_index]:
+					largest = right_index
 	 
 		# Change root, if needed
 		if largest != i:
-			arr[i],arr[largest] = arr[largest],arr[i]  # swap
-			# Heapify the root.
-			self.heapify(arr, n, largest)
+
+			# Swap items
+			array[i],array[largest] = array[largest],array[i]  
+			
+		    # Heapify the parent, until it's no longer required.
+			self.heapify(array, array_size, largest)
 	 
 	# The main function to sort an array of given size
-	def sort_array(self, arr,alphabetical=True):
-		n = len(arr)
+	def sort_array(self, array):
+		array_size = len(array)
+
 		# Build a maxheap.
-		for i in range(n, -1, -1):
-			self.heapify(arr, n, i,alphabetical=alphabetical)
+		self.build_max_heap(array,array_size)
 	 
 		# One by one extract elements
-		for i in range(n-1, 0, -1):
-			arr[i], arr[0] = arr[0], arr[i]   # swap
-			self.heapify(arr, i, 0,alphabetical=alphabetical)
+		for i in range(array_size-1, 0, -1):
+			array[i], array[0] = array[0], array[i]   # swap
+			self.heapify(array, i, 0)
