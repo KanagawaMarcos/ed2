@@ -2,9 +2,9 @@
 #!/usr/bin/python
 
 import utilities
-from SortingAlgorithms import InsertionSort
+from SortingAlgorithms import InsertionSort,HeapSort
 from SelectionSort import SelectionSort
-from HeapSort import HeapSort
+#from HeapSort import HeapSort
 from BinaryInsertionSort import BinaryInsertionSort
 
 def how_to_use():
@@ -106,11 +106,11 @@ if __name__ == "__main__":
 
 	# Creat a sort algorithm object 
 	algorithm = create_algorithm(algorithm)
-
+	
 	# Set it's atributes and sort 
 	algorithm.method = method
 	algorithm.file = filename
-	algorithm.sort()
+	algorithm.sort(duplicates=False)
 	## NEED TO CHECK THE METHOD IF IT'S VALID AND FILE AS WELL
 
 """
