@@ -5,16 +5,28 @@ import utilities
 class AbstractSortClass():
 	method = ''
 	file = ''
+	def print_words(self,array):
+		for word in array:
+			print(word)
 
 class InsertionSort(AbstractSortClass):
 
 	def sort(self):
 
 		if self.method == 'alphabetical':
-			array = utilities.convert_file_to_dictionary(self.file)
-			sort_alphabetical(array)
+			# Get all words and store them in a dictionary | Key = word, Value = occurrences
+			dictionary = utilities.convert_file_to_dictionary(self.file)
+
+			# Get all words and put them in an unsorted array
+			array = list(dictionary.keys())
+
+			# Sort this array
+			self.sort_alphabetical(array)
+
+			# Print all words sorted in the screen
+			self.print_words(array)
 		else:
-			sort_occurences()
+			self.sort_occurences()
 
 	def sort_occurences(self):
 		pass
@@ -29,6 +41,7 @@ class InsertionSort(AbstractSortClass):
 			current_backwards = current_foward
 
 			# Check which word comes first in alphabetic order
+
 			this = array[current_backwards-1]
 			that = array[current_backwards]
 

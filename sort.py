@@ -4,7 +4,6 @@
 import utilities
 from SortingAlgorithms import InsertionSort
 from SelectionSort import SelectionSort
-#from InsertionSort import InsertionSort
 from HeapSort import HeapSort
 from BinaryInsertionSort import BinaryInsertionSort
 
