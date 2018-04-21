@@ -2,8 +2,9 @@
 #!/usr/bin/python
 
 import utilities
+from SortingAlgorithms import InsertionSort
 from SelectionSort import SelectionSort
-from InsertionSort import InsertionSort
+#from InsertionSort import InsertionSort
 from HeapSort import HeapSort
 from BinaryInsertionSort import BinaryInsertionSort
 
@@ -67,10 +68,10 @@ def menu(argv):
 	return args
 def create_algorithm(algorithm):
 
-	if algorithm == 'insertsort':
+	if algorithm == 'insertionsort' or algorithm == 'insertsort':
 		return InsertionSort()
 
-	elif algorithm == 'selectionsort':
+	elif algorithm == 'selectionsort' or algorithm == 'selectsort':
 		return SelectionSort()
 
 	elif algorithm == 'quicksort':
@@ -79,14 +80,14 @@ def create_algorithm(algorithm):
 	elif algorithm == 'heapsort':
 		return HeapSort()
 
-	elif algorithm == 'binaryinsertsort':
-		return HeapSort()
+	elif algorithm == 'binaryinsertionsort' or algorithm == 'binaryinsertsort':
+		return BinaryInsertSort()
 
 	elif algorithm == 'introsort':
-		return HeapSort()
+		return IntroSort()
 
 	elif algorithm == 'timsort':
-		return HeapSort()
+		return TimSort()
 
 	else:
 		error(algorithm)
@@ -94,19 +95,22 @@ def create_algorithm(algorithm):
 
 if __name__ == "__main__":
 	
+	# Get user's arguments
 	arguments = menu(sys.argv[1:])
 	
+	# Get a string for each argument
 	algorithm = arguments.algorithm.lower()
 
-	filename = arguments.filename.lower()
+	filename = arguments.file.lower()
 
 	method = arguments.method.lower()
 
 	# Creat a sort algorithm object 
 	algorithm = create_algorithm(algorithm)
 
-	algorithm.set_method(method)
-	algorithm.set_file(filename)
+	# Set it's atributes and sort 
+	algorithm.method = method
+	algorithm.file = filename
 	algorithm.sort()
 
 
