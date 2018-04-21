@@ -136,7 +136,6 @@ class InsertionSort(AbstractSortClass):
 				# Swap the numbers
 				array[current_backwards+1] = numberA
 
-
 class HeapSort(AbstractSortClass):
 
 	def build_max_heap(self, array,array_size):
@@ -156,7 +155,7 @@ class HeapSort(AbstractSortClass):
 			if type(array[i]) is not int:
 
 				# See if left child of root exists and is greater than it's parent
-				if left_index < array_size and utilities.this_word_comes_first_than_that(array[left_index],array[i]) :
+				if left_index < array_size and utilities.this_word_comes_first_than_that(array[left_index],array[i]):
 					largest = left_index
 			 
 				# See if right child of root exists and is greater than it's parent
@@ -192,29 +191,35 @@ class HeapSort(AbstractSortClass):
 		for i in range(array_size-1, 0, -1):
 			array[i], array[0] = array[0], array[i]   # swap
 			self.heapify(array, i, 0)
-"""
+
 class ShellSort(AbstractSortClass):
 
-		def sort_array(self, array):
-				size=len(array)-1
-				gap=1
-				
-				#Faz com que a variavÃ©l H receba o maior valor possÃ­vel
-				while gap<size:
-					gap=(gap*3)+1
-				while gap>=1:
-						i=0
-						j=gap
-						#Percorre a array nas posiÃ§Ãµes i e j, na distÃ¢ncia h atÃ© o final do vetor
-						while j<size and gap>0:
-								#Testa para ver se a palavra no array[j] vem antes do array[i]
-								if utilities.this_word_comes_first_than_that(array[j],array[i])
-										#Troca as palavras da array
-										array[i],array[j]=array[j],array[i]
-										#Movimenta as variaveis i e j
-										j=j+gap
-										i=i+gap
-                                #Atualiza o valor de h             
-								gap=(gap-1)/3
+	def sort_array(self, array):
+		size=len(array)-1
+		gap=1
+		
+		# Start gap with a size greater then array size
+		while gap < size:
+			gap=(gap*3)+1
+		while gap > 1:
+			gap /= 3
+
+			for i in range(int(gap), size):
+				value = array[i];
+				j = i
+				# Verify if it's a number or a word
+				if type(array[i]) is not int:
+					#Percorre a array nas posiÃ§Ãµes i e j, na distÃ¢ncia h atÃ© o final do vetor
+					while j >= gap and utilities.this_word_comes_first_than_that(array[int(j-gap)], value):
+						array[j] = array[int(j - gap)]
+						j = int(j - gap)
+	                    #Atualiza o valor de h             
+					array[j] = value
+				else:
+					#Percorre a array nas posiÃ§Ãµes i e j, na distÃ¢ncia h atÃ© o final do vetor
+					while j >= gap and value > array[int(j-gap)]:
+						array[j] = array[int(j - gap)]
+						j = int(j - gap)
+	                    #Atualiza o valor de h             
+					array[j] = value
 		return array
-"""
