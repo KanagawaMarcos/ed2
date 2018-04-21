@@ -10,7 +10,13 @@ from BinaryInsertionSort import BinaryInsertionSort
 def how_to_use():
 	print('----------------------------------------------------------------------') 
 	print('Example:') 
-	print('python3 order.py -a heapsort -m alphabetical -f 1\ primeira\ entrada.txt') 
+	print('python3 sort.py -a heapsort -m alphabetical -f 1\ primeira\ entrada.txt') 
+
+def error(name):
+	print('----------------------------------------------------------------------') 
+	print(name + ' is not valid!') 
+	print('Usage Example:') 
+	print('python3 sort.py -a heapsort -m alphabetical -f 1\ primeira\ entrada.txt') 
 
 import argparse,sys
 def menu(argv):
@@ -33,7 +39,7 @@ def menu(argv):
 		print('-ShellSort')
 		print('-QuickSort')
 		print('-HeapSort')
-		print('-Binary InsertSort')
+		print('-BinaryInsertSort')
 		print('-IntroSort')
 		print('-TimSort')
 
@@ -58,16 +64,57 @@ def menu(argv):
 		how_to_use()
 		sys.exit(2)
 
+	return args
+def create_algorithm(algorithm):
+
+	if algorithm == 'insertsort':
+		return InsertionSort()
+
+	elif algorithm == 'selectionsort':
+		return SelectionSort()
+
+	elif algorithm == 'quicksort':
+		return QuickSort()
+
+	elif algorithm == 'heapsort':
+		return HeapSort()
+
+	elif algorithm == 'binaryinsertsort':
+		return HeapSort()
+
+	elif algorithm == 'introsort':
+		return HeapSort()
+
+	elif algorithm == 'timsort':
+		return HeapSort()
+
+	else:
+		error(algorithm)
+		sys.exit(2)
 
 if __name__ == "__main__":
-
-	menu(sys.argv[1:])
 	
+	arguments = menu(sys.argv[1:])
+	
+	algorithm = arguments.algorithm.lower()
+
+	filename = arguments.filename.lower()
+
+	method = arguments.method.lower()
+
+	# Creat a sort algorithm object 
+	algorithm = create_algorithm(algorithm)
+
+	algorithm.set_method(method)
+	algorithm.set_file(filename)
+	algorithm.sort()
+
+
 """
 filename = '1 primeira entrada.txt'
 #filename = 'deleteme.teste.txt'
 
-sorting_algorithm_choosen = BinaryInsertionSort()
+sorting_algorithm_choosed = BinaryInsertionSort()
 #sorting_algorithm_choosen = SelectionSort()
 #sorting_algorithm_choosen = InsertionSort()
 #sorting_algorithm_choosen = HeapSort()
