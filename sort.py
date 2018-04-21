@@ -9,7 +9,7 @@ from BinaryInsertionSort import BinaryInsertionSort
 
 def how_to_use():
 	print('----------------------------------------------------------------------') 
-	print('How to use:') 
+	print('Example:') 
 	print('python3 order.py -a heapsort -m alphabetical -f 1\ primeira\ entrada.txt') 
 
 import argparse,sys
