@@ -114,26 +114,6 @@ if __name__ == "__main__":
 	## NEED TO CHECK THE METHOD IF IT'S VALID AND FILE AS WELL
 
 """
-filename = '1 primeira entrada.txt'
-#filename = 'deleteme.teste.txt'
-
 sorting_algorithm_choosed = BinaryInsertionSort()
 #sorting_algorithm_choosen = SelectionSort()
-#sorting_algorithm_choosen = InsertionSort()
-#sorting_algorithm_choosen = HeapSort()
-
-dictionary = utilities.convert_file_to_dictionary(filename)
-
-
-#array = utilities.convert_file_to_array(filename)
-array = list(dictionary.keys())
-
-#array_occurrence = []
-
-#for word in array:
-#	array.append(dictionary[word])
-
-sorting_algorithm_choosen.sort_array(array)
-
-
 """

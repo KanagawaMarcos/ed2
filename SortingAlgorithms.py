@@ -36,112 +36,6 @@ class AbstractSortClass():
 
 		return array
 
-class InsertionSort(AbstractSortClass):
-
-	def sort(self,n=4,duplicates=True):
-
-		if self.method == 'alphabetical':
-
-			array = self.load_file_to_array(duplicates)
-
-			# Store the time where all begin
-			start_time = time.time()
-
-			# Sort this array
-			self.sort_alphabetical(array)
-
-			# Calculate the time it took to sort
-			self.execution_time = time.time()-start_time
-
-			# Print all words sorted in the screen
-			self.print_words(array)
-
-			# And it's execution time
-			print('Execution Time (Seconds): ' + str(self.execution_time))
-
-
-		else:
-
-			# Load the file in an array
-			array = self.load_file_to_array(duplicates)
-
-			# Load the file in a dictionary
-			dictionary = self.load_file_to_dictionary()
-
-			occurrences = []
-			# For each word, store it's occurrence value
-			for word in array:
-				occurrences.append(dictionary[word])
-
-			# Store the time where all begin
-			start_time = time.time()
-
-			# Sort this occurrence array
-			self.sort_occurrences(occurrences)
-
-			# Calculate the time it took to sort
-			self.execution_time = time.time()-start_time
-
-			# Print all words sorted in the screen
-			self.print_words(occurrences)
-
-			# And it's execution time
-			print('Execution Time (Seconds): ' + str(self.execution_time))
-
-	def sort_occurrences(self, arr):
-
-		# Loop through the entire array
-		for current_foward in range( 1, len(arr) ):
-
-			numberA = arr[current_foward]
-
-			# Go on each element before the current
-			current_backwards = current_foward-1
-
-			# Check which occurrence number comes first in decreasing order
-			while current_backwards >=0 and numberA < arr[current_backwards] :
-
-					# Move to the right
-					arr[current_backwards+1] = arr[current_backwards]
-
-					# Go one step to the left
-					current_backwards -= 1
-			
-			# Swap the numbers
-			arr[current_backwards+1] = numberA
-
-	# Sort an array using Selection Sort
-	def sort_alphabetical(self, array,n=4):
-		
-		# Loop through the entire array
-		for current_foward in range( 1, len(array) ):
-			
-			# Go on each element before the current
-			current_backwards = current_foward
-
-			# Check which word comes first in alphabetic order
-
-			this = array[current_backwards-1]
-			that = array[current_backwards]
-
-			# Do it whithout going out of the array boundery
-			while current_backwards > 0 and utilities.this_word_comes_first_than_that(this,that,n=n):
-					
-					# Swap the words
-
-					i = current_backwards
-					j = (current_backwards - 1)
-
-					array[i],array[j] = array[j],array[i]
-
-					# Update their indexes to go even futher in the array
-					current_backwards -= 1
-
-					this = array[current_backwards-1]
-					that = array[current_backwards]
-
-class HeapSort(AbstractSortClass):
-
 	def sort(self,n=4,duplicates=True):
 
 		if self.method == 'alphabetical':
@@ -191,6 +85,60 @@ class HeapSort(AbstractSortClass):
 			# And it's execution time
 			print('Execution Time (Seconds): ' + str(self.execution_time))
 
+class InsertionSort(AbstractSortClass):
+
+	# Sort an array using Insertion Sort
+	def sort_array(self, array,n=4):
+		# Loop through the entire array
+		for current_foward in range( 1, len(array) ):
+			
+			# Go on each element before the current
+			current_backwards = current_foward
+
+			# Verify if it's a number or a word
+			if type(array[current_foward]) is not int:
+
+				# Check which word comes first in alphabetic order
+				this = array[current_backwards-1]
+				that = array[current_backwards]
+				# Do it whithout going out of the array boundery
+				while current_backwards > 0 and utilities.this_word_comes_first_than_that(this,that,n=n):
+						
+					# Swap the words
+
+					i = current_backwards
+					j = (current_backwards - 1)
+
+					array[i],array[j] = array[j],array[i]
+
+					# Update their indexes to go even futher in the array
+					current_backwards -= 1
+
+					this = array[current_backwards-1]
+					that = array[current_backwards]
+			else:
+
+				# Check which number is smaller first 
+				numberA = array[current_foward]
+
+				# Go on each element before the current
+				current_backwards = current_foward-1
+
+				# Check which occurrence number comes first in decreasing order
+				while current_backwards >=0 and numberA > array[current_backwards] :
+
+					# Move to the right
+					array[current_backwards+1] = array[current_backwards]
+
+					# Go one step to the left
+					current_backwards -= 1
+				
+				# Swap the numbers
+				array[current_backwards+1] = numberA
+
+
+class HeapSort(AbstractSortClass):
+
 	def build_max_heap(self, array,array_size):
 		for i in range(array_size, -1, -1):
 			self.heapify(array, array_size, i)
@@ -216,12 +164,12 @@ class HeapSort(AbstractSortClass):
 					largest = right_index
 			else:
 
-				# See if left child of root exists and is greater than it's parent
-				if left_index < array_size and array[i] < array[left_index]:
+				# See if left child of root exists and is smaller than it's parent
+				if left_index < array_size and array[i] > array[left_index]:
 					largest = left_index
 				
-				# See if right child of root exists and is greater than it's parent
-				if right_index < array_size and array[largest] < array[right_index]:
+				# See if right child of root exists and is smaller than it's parent
+				if right_index < array_size and array[largest] > array[right_index]:
 					largest = right_index
 	 
 		# Change root, if needed
@@ -244,3 +192,29 @@ class HeapSort(AbstractSortClass):
 		for i in range(array_size-1, 0, -1):
 			array[i], array[0] = array[0], array[i]   # swap
 			self.heapify(array, i, 0)
+"""
+class ShellSort(AbstractSortClass):
+
+		def sort_array(self, array):
+				size=len(array)-1
+				gap=1
+				
+				#Faz com que a variavÃ©l H receba o maior valor possÃ­vel
+				while gap<size:
+					gap=(gap*3)+1
+				while gap>=1:
+						i=0
+						j=gap
+						#Percorre a array nas posiÃ§Ãµes i e j, na distÃ¢ncia h atÃ© o final do vetor
+						while j<size and gap>0:
+								#Testa para ver se a palavra no array[j] vem antes do array[i]
+								if utilities.this_word_comes_first_than_that(array[j],array[i])
+										#Troca as palavras da array
+										array[i],array[j]=array[j],array[i]
+										#Movimenta as variaveis i e j
+										j=j+gap
+										i=i+gap
+                                #Atualiza o valor de h             
+								gap=(gap-1)/3
+		return array
+"""
