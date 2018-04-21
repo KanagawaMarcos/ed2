@@ -110,8 +110,8 @@ if __name__ == "__main__":
 	# Set it's atributes and sort 
 	algorithm.method = method
 	algorithm.file = filename
-	algorithm.sort()
-
+	algorithm.sort(duplicates=False)
+	## NEED TO CHECK THE METHOD IF IT'S VALID AND FILE AS WELL
 
 """
 filename = '1 primeira entrada.txt'
@@ -136,8 +136,4 @@ array = list(dictionary.keys())
 sorting_algorithm_choosen.sort_array(array)
 
 
-for word in array:
-	print(word)
-print('----------------------\n')
-print('tamanho: '+str(len(array)))
 """
