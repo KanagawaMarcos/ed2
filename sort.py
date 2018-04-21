@@ -110,7 +110,7 @@ if __name__ == "__main__":
 	# Set it's atributes and sort 
 	algorithm.method = method
 	algorithm.file = filename
-	algorithm.sort(duplicates=False)
+	algorithm.sort()
 	## NEED TO CHECK THE METHOD IF IT'S VALID AND FILE AS WELL
 
 """
