@@ -476,3 +476,46 @@ class QuickSort(AbstractSortClass):
 			self.QuickSort(array, num+1, end)
 			return array
 
+import math,random
+class IntroSort(AbstractSortClass):
+	
+
+	def sort_array(self, array):
+		max_depth = math.log(len(array),2)
+		self.introsort(array, max_depth)
+
+	def introsort(self, array, max_depth):
+		size = len(array)
+		#pivot = self.partition(array, 0, len(array)-1)#???
+		pivot = size-1
+
+		if size <= 1:
+			return
+		elif pivot > max_depth:
+			heapsort = HeapSort()
+			heapsort.sort_array(array)
+		else:
+			self.introsort(array[0:p], max_depth - 1)
+			self.introsort(array[p+1:n], max_depth - 1)
+	
+	# Select the pivot
+	def partition(self, array, start, end):
+		pivot = end
+		partition_index = start
+
+		for i in range(start, end):
+			# Verify if it's a number or a word
+			if type(array[i]) is not int:
+				if utilities.this_word_comes_first_than_that(array[i],array[pivot]):
+					#print("{} is less than {}".format(array[i], array[pivot]))
+					array[partition_index],array[i] = array[i], array[partition_index]
+					#swap_values(array, partition_index, i)
+					partition_index += 1
+			else:
+				if array[i] < array[pivot]:
+					#print("{} is less than {}".format(array[i], array[pivot]))
+					array[partition_index],array[i] = array[i], array[partition_index]
+					#swap_values(array, partition_index, i)
+					partition_index += 1
+		array[pivot], array[partition_index] = array[partition_index], array[pivot]
+		return partition_index

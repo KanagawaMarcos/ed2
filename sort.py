@@ -2,7 +2,7 @@
 #!/usr/bin/python
 
 import utilities
-from SortingAlgorithms import InsertionSort,HeapSort,ShellSort,SelectionSort,BinaryInsertionSort,TimSort,QuickSort
+from SortingAlgorithms import InsertionSort,HeapSort,ShellSort,SelectionSort,BinaryInsertionSort,TimSort,QuickSort,IntroSort
 
 def how_to_use():
 	print('----------------------------------------------------------------------') 
