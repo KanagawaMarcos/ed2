@@ -2,8 +2,8 @@
 #!/usr/bin/python
 
 import utilities
-from SortingAlgorithms import InsertionSort,HeapSort,ShellSort
-from SelectionSort import SelectionSort
+from SortingAlgorithms import InsertionSort,HeapSort,ShellSort,SelectionSort
+#from SelectionSort import SelectionSort
 from BinaryInsertionSort import BinaryInsertionSort
 
 def how_to_use():
