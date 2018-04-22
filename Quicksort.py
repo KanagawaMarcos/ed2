@@ -79,18 +79,18 @@ class Quick():
 class QuickSort(AbstractSortClass):
         def sort_array(self,array):
                 end = len(array)
-                self.quickSort(array,0,end)
+                self.quickSort(array,0,end-1)
                 return array
         
         def particiona(self, array, begin, end):
                 i=begin
-                j=end-1
+                j=end
                 meio = int((i+j)/2)
                 pivo=array[meio]
 
                 #Troca o pivÃ´ com o primeiro elemento
                 array[i],array[meio] = array[meio],array[i]
-                i=+1
+                i=i+1
                 loop_j=0
 
 
@@ -113,8 +113,8 @@ class QuickSort(AbstractSortClass):
                                                 else:
                                                         #Troca as palavras no array nas posiÃ§Ãµes i e j
                                                         array[i],array[j] = array[j],array[i]
-                                                        i+1
-                                                        j-1
+                                                        i=i+1
+                                                        j=j-1
                                                         #Encerra o Loop
                                                         loop_j=loop_j+1
                         else:
@@ -129,8 +129,8 @@ class QuickSort(AbstractSortClass):
                                                 else:
                                                         #Troca as palavras no array nas posiÃ§Ãµes i e j
                                                         array[i],array[j] = array[j],array[i]
-                                                        i+1
-                                                        j-1
+                                                        i=i+1
+                                                        j=j-1
                                                         #Encerra o Loop
                                                         loop_j=loop_j+1
 
@@ -138,7 +138,6 @@ class QuickSort(AbstractSortClass):
                         #Troca as palavras no array nas posiÃ§Ãµes meio e j
                         array[begin],array[j]=array[j],array[begin]
                                         
-                        array[j]
                         return j
 
                 return j
