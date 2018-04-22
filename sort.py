@@ -3,7 +3,7 @@
 
 import utilities
 from SortingAlgorithms import InsertionSort,HeapSort,ShellSort,SelectionSort,BinaryInsertionSort,TimSort,IntroSort,QuickSort
-#from QuickSort import QuickSort
+
 
 def how_to_use():
 	print('----------------------------------------------------------------------') 

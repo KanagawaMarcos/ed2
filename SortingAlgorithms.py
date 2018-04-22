@@ -134,7 +134,8 @@ class AbstractSortClass():
 class InsertionSort(AbstractSortClass):
 
 	# Sort an array using Insertion Sort
-	def sort_array(self, array,n=4):
+	def sort_array(self, array,n=4,limit=0):
+
 		# Loop through the entire array
 		for current_foward in range( 1, len(array) ):
 			
@@ -181,6 +182,56 @@ class InsertionSort(AbstractSortClass):
 				
 				# Swap the numbers
 				array[current_backwards+1] = numberA
+	# Sort an array using Insertion Sort
+	def sort_array_tim(self, array,left, right):
+
+		# Loop through the entire array
+		for current_foward in range( left, right ):
+			
+			# Go on each element before the current
+			current_backwards = current_foward
+
+			# Verify if it's a number or a word
+			if type(array[current_foward]) is not int:
+
+				# Check which word comes first in alphabetic order
+				this = array[current_backwards-1]
+				that = array[current_backwards]
+				# Do it whithout going out of the array boundery
+				while current_backwards > 0 and utilities.this_word_comes_first_than_that(this,that,n=n):
+						
+					# Swap the words
+
+					i = current_backwards
+					j = (current_backwards - 1)
+
+					array[i],array[j] = array[j],array[i]
+
+					# Update their indexes to go even futher in the array
+					current_backwards -= 1
+
+					this = array[current_backwards-1]
+					that = array[current_backwards]
+			else:
+
+				# Check which number is smaller first 
+				numberA = array[current_foward]
+
+				# Go on each element before the current
+				current_backwards = current_foward-1
+
+				# Check which occurrence number comes first in decreasing order
+				while current_backwards >=0 and numberA > array[current_backwards] :
+
+					# Move to the right
+					array[current_backwards+1] = array[current_backwards]
+
+					# Go one step to the left
+					current_backwards -= 1
+				
+				# Swap the numbers
+				array[current_backwards+1] = numberA
+
 
 class HeapSort(AbstractSortClass):
 
@@ -331,7 +382,7 @@ class BinaryInsertionSort(AbstractSortClass):
 
 			# Insert the element
 			array[index_to_insert] = element
-
+"""
 class TimSort(AbstractSortClass):
 	def insertion_sort(self, array):
 		l = len(array)
@@ -402,7 +453,7 @@ class TimSort(AbstractSortClass):
 		sorted_array = []
 		for run in sorted_runs:
 			sorted_array = self.merge(sorted_array, run)
-
+"""
 import math,random
 class IntroSort(AbstractSortClass):
 	
@@ -476,6 +527,7 @@ class QuickSort(AbstractSortClass):
 					array[left_index],array[right_index] = array[right_index],array[left_index]
 					left_index=left_index+1
 					right_index=right_index-1
+
 			else:
 
 				#Testa se a palavra em left vem antes da palavra em pivÃ´
@@ -504,3 +556,43 @@ class QuickSort(AbstractSortClass):
 			self.QuickSort(array, begin, split)
 			self.QuickSort(array, split+1, end)
 			return array
+
+class TimSort(AbstractSortClass):
+
+	# Takes two sorted lists and returns a single sorted list by comparing the  elements one at a time.
+	def merge(self, left, right):
+		# Check if any of it's array exist
+		if not left:
+			return right
+		if not right:
+			return left
+		# Verify if it's a number or a word
+		if type(left[0]) is not int:
+			# Do a default merge sort 
+			if utilities.this_word_comes_first_than_that(left[0], right[0]):
+				return [left[0]] + self.merge(left[1:], right)          
+		else:
+			# Do a default merge sort 
+			if left[0] < right[0]:
+				return [left[0]] + self.merge(left[1:], right)
+		return [right[0]] + self.merge(left, right[1:])
+
+	def min(self,a,b):
+		if a < b:
+			return a 
+		return b
+
+	def sort_array(self, array):
+		run = 32
+		for left in range(0,len(array),run): 
+			insertionSort = InsertionSort()
+			insertionSort.sort_array_tim(array, left, self.min((left+31),(len(array)-1)))
+		size = run 
+		while size < len(array):
+			left = 0 
+			while left < len(array):
+				mid = left + size - 1;
+				right = self.min((left + 2*size - 1), (len(array)-1))
+				self.merge(array[left:mid], array[(mid+1):right])
+				left += 2*size
+			size = 2*size
