@@ -40,8 +40,9 @@ class Quick():
                                                                                         #Troca as palavras no array nas posiÃ§Ãµes i e j
                                                                                         array[i],array[j] = array[j],array[i]
                                                                                      
-                                                                                        i+1
-                                                                                        j-1
+											#Movimenta as variaveis
+                                                                                        i=i+1
+                                                                                        j=j-1
 
                                                                                         #Encerra o Loop
                                                                                         loop_j=loop_j+1
