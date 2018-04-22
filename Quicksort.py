@@ -10,65 +10,48 @@ class Quick():
 
                         
         def particiona(self, array, begin, end):
-                        i=begin
-                        j=end-1
-                        meio = (i+j)/2
+                        meio=(begin+end)/2
                         pivo=array[meio]
-
+                        left_index=begin
+                        right_index=end-1
+                        
                         #Troca o pivÃ´ com o primeiro elemento
-                        array[i],array[meio] = array[meio],array[i]
-                        i=+1
-                        loop_j=0
+                        array[left_index],array[meio] = array[meio],array[left_index]
 
+                        left_index=left_index+1
 
-                        while j>i:
-
-                                        loop_j=0
-                                
+                        while right_index>left_index:
+                                        
                                         #Testa se a palavra em left vem antes da palavra em pivÃ´
                                         
-                                        if utilities.this_word_comes_first_than_that(array[i],pivo):
-                                                        i=i+1
+                                        if utilities.this_word_comes_first_than_that(array[left_index],pivo):
+                                                        left_index=left_index+1
+					
+                                        #Testa se a palavra no pivÃ´ vem antes da palavra em right
+                                        elif utilities.this_word_comes_first_than_that(pivo,array[right_index]):
+                                                        right_index=right_index-1
+                                                        
                                         else:
-                                                        while loop_j==0:
-                                                                        #Atribui a variavÃ©l right a palavra em array[j]
-                                                                        
-                                                                        #Testa se a palavra no pivÃ´ vem antes da palavra em right
-                                                                        if utilities.this_word_comes_first_than_that(pivo,array[j]):
-                                                                                        j=j-1
-                                                                        else:
-                                                                                        #Troca as palavras no array nas posiÃ§Ãµes i e j
-                                                                                        array[i],array[j] = array[j],array[i]
-                                                                                     
-											#Movimenta as variaveis
-                                                                                        i=i+1
-                                                                                        j=j-1
-
-                                                                                        #Encerra o Loop
-                                                                                        loop_j=loop_j+1
-                        if i>j:
-                                        #Troca as palavras no array nas posiÃ§Ãµes meio e j
-                                        array[begin],array[j]=array[j],array[begin]
-                                        
-                                        print array[j]
-                                        return j
-                        return j                                 
-
-
+                                                        #Troca as palavras no array nas posiÃ§Ãµes i e j
+                                                        array[left_index],array[right_index] = array[right_index],array[left_index]
+                                                        
+                                                        left_index=left_index+1
+                                                        right_index=right_index-1
+                                                       
+                        #Troca as palavras no array nas posiÃ§Ãµes do começo e right_index
+                        array[begin],array[right_index]=array[right_index],array[begin]
+                        return right_index                                 
 
 
         def QuickSort(self, array, begin, end):
                         
-                        if 1>=end:
-                                        return array
-
-                        elif begin < end :
+                        if begin<end
 
                                         #Atribui a variavÃ©l num o valor que serÃ¡ retornado em particiona
-                                        num=self.particiona(array, begin, end)
+                                        split=self.particiona(array, begin, end)
                                         #Usa a variavÃ©l num para determinar um novo fim e comeÃ§o para a funÃ§Ã£o quicksort
-                                        self.QuickSort(array, begin, num)
-                                        self.QuickSort(array, num+1, end)
+                                        self.QuickSort(array, begin, split)
+                                        self.QuickSort(array, spli+1, end)
                                         
                                         return array
 
@@ -83,76 +66,62 @@ class QuickSort(AbstractSortClass):
                 return array
         
         def particiona(self, array, begin, end):
-                i=begin
-                j=end
-                meio = int((i+j)/2)
+    		meio=(begin+end)/2
                 pivo=array[meio]
+		left_index=begin
+		right_index=end-1
 
-                #Troca o pivÃ´ com o primeiro elemento
-                array[i],array[meio] = array[meio],array[i]
-                i=i+1
-                loop_j=0
+		#Troca o pivÃ´ com o primeiro elemento
+		array[left_index],array[meio] = array[meio],array[left_index]
 
+		left_index=left_index+1
 
-                while j>i:
-
-                        loop_j=0
+		while right_index>left_index:
 
                         #Testa se a palavra em left vem antes da palavra em pivÃ´
 
                         # Verify if it's a number or a word
-                        if type(array[i]) is not int:
-                                if utilities.this_word_comes_first_than_that(array[i],pivo):
-                                        i=i+1
-                                else:
-                                        while loop_j==0:
-                                                #Atribui a variavÃ©l right a palavra em array[j]
-                                                #Testa se a palavra no pivÃ´ vem antes da palavra em right
-                                                if utilities.this_word_comes_first_than_that(pivo,array[j]):
-                                                        j=j-1
-                                                else:
-                                                        #Troca as palavras no array nas posiÃ§Ãµes i e j
-                                                        array[i],array[j] = array[j],array[i]
-                                                        i=i+1
-                                                        j=j-1
-                                                        #Encerra o Loop
-                                                        loop_j=loop_j+1
+                        if type(array[left_index]) is not int:
+                                if utilities.this_word_comes_first_than_that(array[left_index],pivo):
+                                	left_index=left_index+1
+                        	elif utilities.this_word_comes_first_than_that(pivo,array[right_index]):
+                                	right_index=right_index-1
+                                                        
+				else:
+					#Troca as palavras no array nas posiÃ§Ãµes i e j
+					array[left_index],array[right_index] = array[right_index],array[left_index]
+
+					left_index=left_index+1
+					right_index=right_index-1
+                                                       
+			
                         else:
-                                if array[i] < pivo :
-                                        i=i+1
+                                if array[left_index] < pivo :
+                                        left_index=left_index+1
+                                elif pivo < array[right_index]:
+					right_index=right_index+1
                                 else:
-                                        while loop_j==0:
-                                                #Atribui a variavÃ©l right a palavra em array[j]
-                                                #Testa se a palavra no pivÃ´ vem antes da palavra em right
-                                                if pivo < array[j]:
-                                                        j=j-1
-                                                else:
-                                                        #Troca as palavras no array nas posiÃ§Ãµes i e j
-                                                        array[i],array[j] = array[j],array[i]
-                                                        i=i+1
-                                                        j=j-1
-                                                        #Encerra o Loop
-                                                        loop_j=loop_j+1
+                                        #Troca as palavras no array nas posiÃ§Ãµes i e j
+					array[left_index],array[right_index] = array[right_index],array[left_index]
 
-                if i>j:
-                        #Troca as palavras no array nas posiÃ§Ãµes meio e j
-                        array[begin],array[j]=array[j],array[begin]
-                                        
-                        return j
-
-                return j
+					left_index=left_index+1
+					right_index=right_index-1
+		#Troca as palavras no array nas posiÃ§Ãµes do começo e right_index
+		array[begin],array[right_index]=array[right_index],array[begin]
+		return right_index 
 
         def quickSort(self, array, begin, end):
-                        
-                if 1>=end:
-                        return array
-                elif begin < end :
-                        #Atribui a variavÃ©l num o valor que serÃ¡ retornado em particiona
-                        num=self.particiona(array, begin, end)
-                        #Usa a variavÃ©l num para determinar um novo fim e comeÃ§o para a funÃ§Ã£o quicksort
-                        self.quickSort(array, begin, num)
-                        self.quickSort(array, num+1, end)
-                        return array
+                       
+               if begin<end
+	       
+			#Atribui a variavÃ©l split o valor que serÃ¡ retornado em particiona
+			split=self.particiona(array, begin, end)
+			
+			#Usa a variavÃ©l num para determinar um novo fim e comeÃ§o para a funÃ§Ã£o quicksort
+			self.QuickSort(array, begin, split)
+			self.QuickSort(array, spli+1, end)
+
+			return array
 """
 
 				
