@@ -2,9 +2,8 @@
 #!/usr/bin/python
 
 import utilities
-from SortingAlgorithms import InsertionSort,HeapSort,ShellSort,SelectionSort
-#from SelectionSort import SelectionSort
-from BinaryInsertionSort import BinaryInsertionSort
+from SortingAlgorithms import InsertionSort,HeapSort,ShellSort,SelectionSort,BinaryInsertionSort
+#from BinaryInsertionSort import BinaryInsertionSort
 
 def how_to_use():
 	print('----------------------------------------------------------------------') 
@@ -82,7 +81,7 @@ def create_algorithm(algorithm):
 		return ShellSort()
 	
 	elif algorithm == 'binaryinsertionsort' or algorithm == 'binaryinsertsort':
-		return BinaryInsertSort()
+		return BinaryInsertionSort()
 
 	elif algorithm == 'introsort':
 		return IntroSort()
