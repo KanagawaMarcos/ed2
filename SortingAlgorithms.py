@@ -36,6 +36,52 @@ class AbstractSortClass():
 
 		return array
 
+	# Returns the index where this searched item is
+	def binary_search(self, array, left, right, value):
+		# ???????
+		if left == right:
+			if type(array[left]) is not int:
+				if utilities.this_word_comes_first_than_that(array[left], value):
+					return left+1
+				else:
+					return left
+			else:
+				if array[left] > value:
+					return left+1
+				else:
+					return left
+		# ????????
+		if left > right:
+			return left
+
+		middle = (left + right)//2
+
+		# Verify if it's a number or a word
+		if type(array[middle]) is not int:
+
+			# If it's smaller, the value is in the left subarray
+			if utilities.this_word_comes_first_than_that(array[middle], value):
+				return self.binary_search(array, left, middle-1,value)
+
+			# If it's greater, then this value must be at the right subarray
+			elif utilities.this_word_comes_first_than_that(value,  array[middle]):
+				return self.binary_search(array, middle+1, right,value)
+
+			# If we ge here, so this element is not in this array, return where it stopped
+			else:
+				return middle
+		else:
+			# If it's smaller, the value is in the left subarray
+			if array[middle] < value:
+				return self.binary_search(array, left, middle-1,value)
+
+			# If it's greater, then this value must be at the right subarray
+			elif array[middle] > value:
+				return self.binary_search(array, middle+1, right,value)
+
+			# If we ge here, so this element is not in this array, return where it stopped
+			else:
+				return middle
 	def sort(self,n=4,duplicates=True):
 
 		if self.method == 'alphabetical':
@@ -286,51 +332,73 @@ class BinaryInsertionSort(AbstractSortClass):
 			# Insert the element
 			array[index_to_insert] = element
 
-			
+class TimSort(AbstractSortClass):
+	def insertion_sort(self, array):
+		l = len(array)
+		for index in range(1, l):
+			value = array[index]
+			pos = self.binary_search(array, value, 0, index - 1)
+			array = array[:pos] + [value] + array[pos:index] + array[index+1:]
+		return array
+	
+	# Takes two sorted lists and returns a single sorted list by comparing the	elements one at a time.
+	def merge(self,left, right):
 
-	# Returns the index where this searched item is
-	def binary_search(self, array, left, right, value):
-		# ???????
-		if left == right:
-			if type(array[left]) is not int:
-				if utilities.this_word_comes_first_than_that(array[left], value):
-					return left+1
-				else:
-					return left
-			else:
-				if array[left] > value:
-					return left+1
-				else:
-					return left
-		# ????????
-		if left > right:
+		# Check if any of it's array exist
+		if not left:
+			return right
+		if not right:
 			return left
 
-		middle = (left + right)//2
-
 		# Verify if it's a number or a word
-		if type(array[middle]) is not int:
+		if type(left[0]) is not int:
 
-			# If it's smaller, the value is in the left subarray
-			if utilities.this_word_comes_first_than_that(array[middle], value):
-				return self.binary_search(array, left, middle-1,value)
-
-			# If it's greater, then this value must be at the right subarray
-			elif utilities.this_word_comes_first_than_that(value,  array[middle]):
-				return self.binary_search(array, middle+1, right,value)
-
-			# If we ge here, so this element is not in this array, return where it stopped
-			else:
-				return middle
+			# Do a default merge sort 
+			if utilities.this_word_comes_first_than_that(left[0], right[0]):
+				return [left[0]] + self.merge(left[1:], right)			
 		else:
-			# If it's smaller, the value is in the left subarray
-			if array[middle] < value:
-				return self.binary_search(array, left, middle-1,value)
+			# Do a default merge sort 
+			if left[0] < right[0]:
+				return [left[0]] + self.merge(left[1:], right)
+		return [right[0]] + self.merge(left, right[1:])
 
-			# If it's greater, then this value must be at the right subarray
-			elif array[middle] > value:
-				return self.binary_search(array, middle+1, right,value)
+	def sort_array(self,array):
 
-			# If we ge here, so this element is not in this array, return where it stopped
+		runs, sorted_runs = [], []
+		l = len(array)
+		new_run = [array[0]]
+
+		for i in range(1, l):
+			if i == l-1:
+				new_run.append(array[i])
+				runs.append(new_run)
+				break
+			# Verify if it's a number or a word
+			if type(array[i]) is not int:
+				if utilities.this_word_comes_first_than_that(array[i], array[i-1]):
+					if not new_run:
+						runs.append([array[i]])
+						new_run.append(array[i])
+					else:
+						runs.append(new_run)
+						new_run = []
+				else:
+					new_run.append(array[i])
 			else:
-				return middle
+				if array[i] < array[i-1]:
+					if not new_run:
+						runs.append([array[i]])
+						new_run.append(array[i])
+					else:
+						runs.append(new_run)
+						new_run = []
+				else:
+					new_run.append(array[i])
+
+		insertion_sort = InsertionSort()
+		for each in runs:
+			sorted_runs.append(self.insertion_sort(each))
+
+		sorted_array = []
+		for run in sorted_runs:
+			sorted_array = self.merge(sorted_array, run)
