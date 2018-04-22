@@ -14,14 +14,10 @@ class IntroSort():
     def real_IntroSort(self,array,begin,end,depthlimit):
             size = end - begin;
  
-            print 'entrou\n'
             if 16>=size:
-                    print 'entrou\n'
                     self.InsertionSort(array, begin, end)
                     return array;
           
-       
-            print 'passou\n'
             
             if 0>=depthlimit :
           
@@ -32,7 +28,6 @@ class IntroSort():
 
             else:
             
-                    print 'passou_parti\n'
                     partitionPoint=self.particiona(array, begin, end)
                     self.real_IntroSort(array, begin, partitionPoint-1, depthlimit - 1)
                     self.real_IntroSort(array, partitionPoint + 1, end, depthlimit - 1)
@@ -119,49 +114,36 @@ class IntroSort():
 
 
     def particiona(self, array, begin, end):
-                        i=begin
-                        j=end-1
-                        meio = (i+j)/2
-                        pivo=array[meio]
-                        print 'passou_PARTI\n'
-                        #Troca o pivÃ´ com o primeiro elemento
-                        array[i],array[meio] = array[meio],array[i]
-                        i=+1
-                        loop_j=0
+            meio=(begin+end)/2
+            pivo=array[meio]
+            left_index=begin
+            right_index=end-1
+
+            #Troca o pivÃ´ com o primeiro elemento
+            array[left_index],array[meio] = array[meio],array[left_index]
 
 
-                        while j>i:
 
-                                        loop_j=0
-                                
-                                        #Testa se a palavra em left vem antes da palavra em pivÃ´
-                                        print 'NO_LOOP\n'
-                                        print i
-                                        if array[i]<pivo:
-                                                        i=i+1
-                                        else:
-                                                        while loop_j==0:
-                                                                        #Atribui a variavÃ©l right a palavra em array[j]
-                                                                        print '\n'
-                                                                        print j
-                                                                        #Testa se a palavra no pivÃ´ vem antes da palavra em right
-                                                                        if pivo>array[j]:
-                                                                                        j=j-1
-                                                                        else:
-                                                                                        #Troca as palavras no array nas posiÃ§Ãµes i e j
-                                                                                        array[i],array[j] = array[j],array[i]
-                                                                                     
-                                                                                        i=i+1
-                                                                                        j=j-1
+            left_index=left_index+1
 
-                                                                                        print 'NO_LOOP_2\n'
-                                                                                        #Encerra o Loop
-                                                                                        loop_j=loop_j+1
-                        if i>j:
-                                        #Troca as palavras no array nas posiÃ§Ãµes meio e j
-                                        array[begin],array[j]=array[j],array[begin]
-                                        print 'SAINDO\n'
-                                        print j
-                          
-                                        return j
-                        return j
+            while right_index>left_index:
+
+
+                            #Testa se a palavra em left vem antes da palavra em pivÃ´
+
+                            if array[left_index]<pivo:
+                                            left_index=left_index+1
+                            #Testa se a palavra no pivÃ´ vem antes da palavra em right
+                            elif pivo<array[right_index]:
+                                            right_index=right_index-1
+
+                            else:
+                                            #Troca as palavras no array nas posiÃ§Ãµes i e j
+                                            array[left_index],array[right_index] = array[right_index],array[left_index]
+
+                                            left_index=left_index+1
+                                            right_index=right_index-1
+
+            #Troca as palavras no array nas posiÃ§Ãµes do começo e right_index
+            array[begin],array[right_index]=array[right_index],array[begin]
+            return right_index
