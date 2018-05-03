@@ -114,7 +114,3 @@ if __name__ == "__main__":
 	algorithm.sort(duplicates=False)
 	## NEED TO CHECK THE METHOD IF IT'S VALID AND FILE AS WELL
 
-"""
-sorting_algorithm_choosed = BinaryInsertionSort()
-#sorting_algorithm_choosen = SelectionSort()
-"""

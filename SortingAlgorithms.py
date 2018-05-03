@@ -232,7 +232,6 @@ class InsertionSort(AbstractSortClass):
 				# Swap the numbers
 				array[current_backwards+1] = numberA
 
-
 class HeapSort(AbstractSortClass):
 
 	def build_max_heap(self, array,array_size):
@@ -382,78 +381,7 @@ class BinaryInsertionSort(AbstractSortClass):
 
 			# Insert the element
 			array[index_to_insert] = element
-"""
-class TimSort(AbstractSortClass):
-	def insertion_sort(self, array):
-		l = len(array)
-		for index in range(1, l):
-			value = array[index]
-			pos = self.binary_search(array, value, 0, index - 1)
-			array = array[:pos] + [value] + array[pos:index] + array[index+1:]
-		return array
-	
-	# Takes two sorted lists and returns a single sorted list by comparing the	elements one at a time.
-	def merge(self,left, right):
 
-		# Check if any of it's array exist
-		if not left:
-			return right
-		if not right:
-			return left
-
-		# Verify if it's a number or a word
-		if type(left[0]) is not int:
-
-			# Do a default merge sort 
-			if utilities.this_word_comes_first_than_that(left[0], right[0]):
-				return [left[0]] + self.merge(left[1:], right)			
-		else:
-			# Do a default merge sort 
-			if left[0] < right[0]:
-				return [left[0]] + self.merge(left[1:], right)
-		return [right[0]] + self.merge(left, right[1:])
-
-	def sort_array(self,array):
-
-		runs, sorted_runs = [], []
-		l = len(array)
-		new_run = [array[0]]
-
-		for i in range(1, l):
-			if i == l-1:
-				new_run.append(array[i])
-				runs.append(new_run)
-				break
-			# Verify if it's a number or a word
-			if type(array[i]) is not int:
-				if utilities.this_word_comes_first_than_that(array[i], array[i-1]):
-					if not new_run:
-						runs.append([array[i]])
-						new_run.append(array[i])
-					else:
-						runs.append(new_run)
-						new_run = []
-				else:
-					new_run.append(array[i])
-			else:
-				if array[i] < array[i-1]:
-					if not new_run:
-						runs.append([array[i]])
-						new_run.append(array[i])
-					else:
-						runs.append(new_run)
-						new_run = []
-				else:
-					new_run.append(array[i])
-
-		insertion_sort = InsertionSort()
-		for each in runs:
-			sorted_runs.append(self.insertion_sort(each))
-
-		sorted_array = []
-		for run in sorted_runs:
-			sorted_array = self.merge(sorted_array, run)
-"""
 import math,random
 class IntroSort(AbstractSortClass):
 	
