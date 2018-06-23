@@ -32,9 +32,12 @@ def get_graph_from_file(filename):
 			new_graph.add_edge(edge=two_nodes)
 
 	return new_graph
+print("------grafo 1-------")
+filename = "grafo1.graph"
+grafo = get_graph_from_file(filename)
+print(grafo.edges_and_weights())
 
-
-
+print("------grafo 2-------")
 filename = "grafo2.graph"
 grafo = get_graph_from_file(filename)
 print(grafo.edges_and_weights())
