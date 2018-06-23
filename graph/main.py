@@ -9,7 +9,7 @@ def get_graph_from_file(filename):
 
 	number_of_nodes = int(lines[0])
 
-	for i in range(number_of_nodes):
+	for i in range(number_of_nodes+1):
 		new_graph.add_node(i)
 
 	for i in range(1, len(lines)):
@@ -22,17 +22,20 @@ def get_graph_from_file(filename):
 		# add edge recebe um tupla que ele separa
 		# internamente em dois nós separados.
 		two_nodes = (int(edge[0]),int(edge[1]))
-		print(two_nodes)
-		if len(edge) > 2:	
 
-			weight = int(edge[2])
+		# Se a aresta tiver peso
+		if len(edge) > 2:	
+			weight = float(edge[2])
 			new_graph.add_edge(edge=two_nodes, wt=weight, label=str(weight))
 
 		else:
 			new_graph.add_edge(edge=two_nodes)
 
+	return new_graph
 
 
-filename = "grafo1.graph"
-get_graph_from_file(filename)
+
+filename = "grafo2.graph"
+grafo = get_graph_from_file(filename)
+print(grafo.edges_and_weights())
 

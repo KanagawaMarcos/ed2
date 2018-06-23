@@ -134,7 +134,7 @@ class graph(object):
             raise Exception("%s not an existing edge" % edge)
         return self.node_neighbors[u].get(v, self.DEFAULT_WEIGHT)
 
-    def get_edge_weights(self):
+    def edges_and_weights(self):
         """ Returns a list of all edges with their weights """
         edge_list = []
         unique_list = {}
