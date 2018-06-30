@@ -146,11 +146,22 @@ class graph(object):
         return edge_list
 
     def adjacency_matrix(self):
-        list = self.edges_and_weights()
+        list_of_weights = self.edges_and_weights()
         number_of_nodes = len(self.nodes())
         adjacency_matrix = [[0 for j in range(number_of_nodes)] for i in range(number_of_nodes)]
 
-        for i in range(len(list)):
-            adjacency_matrix[list[i][1][0]][list[i][1][1]] = list[i][0]
+        for i in range(len(list_of_weights)):
+            adjacency_matrix[list_of_weights[i][1][0]][list_of_weights[i][1][1]] = list_of_weights[i][0]
 
         return adjacency_matrix
+
+    def adjacency_list(self):
+        list_of_weights = self.edges_and_weights()
+        nodes = list(self.nodes())
+        number_of_nodes = len(nodes)
+        adjacency_list = [ i for i in range(number_of_nodes)]
+
+        for i in range(number_of_nodes):
+            adjacency_list[i] = list(self.neighbors(nodes[i]))
+
+        return adjacency_list
