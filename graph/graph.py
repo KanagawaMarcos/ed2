@@ -144,3 +144,13 @@ class graph(object):
                     edge_list.append((self.node_neighbors[u][v], (u, v)))
                     unique_list.setdefault(u, set()).add(v)
         return edge_list
+
+    def adjacency_matrix(self):
+        list = self.edges_and_weights()
+        number_of_nodes = len(self.nodes())
+        adjacency_matrix = [[0 for j in range(number_of_nodes)] for i in range(number_of_nodes)]
+
+        for i in range(len(list)):
+            adjacency_matrix[list[i][1][0]][list[i][1][1]] = list[i][0]
+
+        return adjacency_matrix

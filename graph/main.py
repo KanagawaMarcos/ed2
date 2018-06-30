@@ -24,7 +24,7 @@ def get_graph_from_file(filename):
 		two_nodes = (int(edge[0]),int(edge[1]))
 
 		# Se a aresta tiver peso
-		if len(edge) > 2:	
+		if len(edge) > 2:
 			weight = float(edge[2])
 			new_graph.add_edge(edge=two_nodes, wt=weight, label=str(weight))
 
@@ -32,13 +32,10 @@ def get_graph_from_file(filename):
 			new_graph.add_edge(edge=two_nodes)
 
 	return new_graph
-print("------grafo 1-------")
-filename = "grafo1.graph"
-grafo = get_graph_from_file(filename)
-print(grafo.edges_and_weights())
 
 print("------grafo 2-------")
 filename = "grafo2.graph"
 grafo = get_graph_from_file(filename)
 print(grafo.edges_and_weights())
-
+print("------lista adjacencia-------")
+print(grafo.adjacency_matrix())
