@@ -4,6 +4,7 @@ from unionfind import UnionFind
 from graph import graph
 import heapq
 
+#Working
 def BFS(gr, s):
     """ Breadth first search 
     Returns a list of nodes that are "findable" from s """
@@ -18,7 +19,7 @@ def BFS(gr, s):
                 nodes_explored.add(each)
                 q.append(each)
     return nodes_explored
-
+#Working
 def shortest_hops(gr, s):
     """ Finds the shortest number of hops required
     to reach a node from s. Returns a dict with mapping:
@@ -41,7 +42,7 @@ def shortest_hops(gr, s):
                     q.append(each)
                     dist[each] = dist[node] + 1
         return dist
-
+#Working
 def undirected_connected_components(gr):
     """ Returns a list of connected components
     in an undirected graph """
@@ -55,7 +56,7 @@ def undirected_connected_components(gr):
             con_components.append(reachable_nodes)
             explored |= reachable_nodes
     return con_components
-
+#Working
 def DFS(gr, s):
     """ Depth first search wrapper """
     path = set([])
@@ -71,6 +72,7 @@ def depth_first_search(gr, s, path):
         if each not in path:
             depth_first_search(gr, each, path)
 
+#Not tested
 def topological_ordering(digr_ori):
     """ Returns a topological ordering for a 
     acyclic directed graph """
@@ -86,6 +88,7 @@ def topological_ordering(digr_ori):
         n -= 1
     return ordering
 
+#Not tested
 def find_sink_node(digr):
     """ Finds a sink node (node with all incoming arcs) 
     in the directed graph. Valid for a acyclic graph only """
@@ -95,6 +98,7 @@ def find_sink_node(digr):
         node = digr.neighbors(node)[0]
     return node
 
+#Not tested
 def directed_connected_components(digr):
     """ Returns a list of strongly connected components
     in a directed graph using Kosaraju's two pass algorithm """
@@ -111,6 +115,7 @@ def directed_connected_components(digr):
             connected_components.append(component)
     return connected_components
 
+#Not tested
 def outer_dfs(digr, node, nodes_explored, path):
     if node in path or node in nodes_explored: 
         return False
@@ -118,7 +123,7 @@ def outer_dfs(digr, node, nodes_explored, path):
     for each in digr.neighbors(node):
         if each not in path or each not in nodes_explored:
             outer_dfs(digr, each, nodes_explored, path)
-
+#Not tested
 def DFS_loop(digr):
     """ Core DFS loop used to find strongly connected components
     in a directed graph """
@@ -130,6 +135,7 @@ def DFS_loop(digr):
             inner_DFS(digr, node, node_explored, finishing_times)
     return finishing_times 
 
+#Not tested
 def inner_DFS(digr, node, node_explored, finishing_times):
     """ Inner DFS used in DFS loop method """
     node_explored.add(node) # mark explored
@@ -140,6 +146,7 @@ def inner_DFS(digr, node, node_explored, finishing_times):
     # adds nodes based on increasing order of finishing times
     finishing_times.append(node) 
 
+#Not Working
 def shortest_path(digr, s):
     """ Finds the shortest path from s to every other vertex findable
     from s using Dijkstra's algorithm in O(mlogn) time. Uses heaps
@@ -170,6 +177,7 @@ def shortest_path(digr, s):
 
     return dist
 
+#Not tested
 def compute_min_dist(digr, n, nodes_explored, dist):
     """ Computes the min dist of node n from a set of
     nodes explored in digr, using dist dict. Used in shortest path """
@@ -180,6 +188,7 @@ def compute_min_dist(digr, n, nodes_explored, dist):
             if d < min: min = d
     return min
 
+#Not Working
 def minimum_spanning_tree(gr):
     """ Uses prim's algorithm to return the minimum 
     cost spanning tree in a undirected connected graph.
@@ -212,6 +221,7 @@ def minimum_spanning_tree(gr):
                         heapq.heapify(node_heap)
     return min_cost
 
+
 def compute_key(gr, n, nodes_explored):
     """ computes minimum key for node n from a set of nodes_explored
     in graph gr. Used in Prim's implementation """
@@ -222,6 +232,8 @@ def compute_key(gr, n, nodes_explored):
             if w < min: min = w
     return min
 
+
+#Working
 def kruskal_MST(gr):
     """ computes minimum cost spanning tree in a undirected, 
     connected graph using Kruskal's MST. Uses union-find data structure
