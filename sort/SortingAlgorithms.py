@@ -304,14 +304,14 @@ class ShellSort(AbstractSortClass):
 				j = i
 				# Verify if it's a number or a word
 				if type(array[i]) is not int:
-					#Percorre a array nas posiÃ§Ãµes i e j, na distÃ¢ncia h atÃ© o final do vetor
+					# Percorre a array nas posiÃ§Ãµes i e j, na distÃ¢ncia h atÃ© o final do vetor
 					while j >= gap and utilities.this_word_comes_first_than_that(array[int(j-gap)], value):
 						array[j] = array[int(j - gap)]
 						j = int(j - gap)
 	                    #Atualiza o valor de h
 					array[j] = value
 				else:
-					#Percorre a array nas posiÃ§Ãµes i e j, na distÃ¢ncia h atÃ© o final do vetor
+					# Percorre a array nas posiÃ§Ãµes i e j, na distÃ¢ncia h atÃ© o final do vetor
 					while j >= gap and value > array[int(j-gap)]:
 						array[j] = array[int(j - gap)]
 						j = int(j - gap)
