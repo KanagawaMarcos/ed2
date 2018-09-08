@@ -37,12 +37,12 @@ python3 sort.py -a HeapSort -m alphabetical -f test1.txt
 	* Heap Sort
 	* Shell Sort
 	* Selection Sort
-	* Intro Sort 
+	* Intro Sort
 * Occurrences Number
 	* Insertion Sort
 	* Heap Sort
 	* Shell Sort
 	* Selection Sort
-	* Binary Insertion Sort 
-	* Intro Sort 
+	* Binary Insertion Sort
+	* Intro Sort
 	* Quick Sort
