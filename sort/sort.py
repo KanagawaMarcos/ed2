@@ -6,15 +6,15 @@ from SortingAlgorithms import InsertionSort,HeapSort,ShellSort,SelectionSort,Bin
 
 
 def how_to_use():
-	print('----------------------------------------------------------------------') 
-	print('Example:') 
-	print('python3 sort.py -a heapsort -m alphabetical -f 1\ primeira\ entrada.txt') 
+	print('----------------------------------------------------------------------')
+	print('Example:')
+	print('python3 sort.py -a heapsort -m alphabetical -f 1\ primeira\ entrada.txt')
 
 def error(name):
-	print('----------------------------------------------------------------------') 
-	print(name + ' is not valid!') 
-	print('Usage Example:') 
-	print('python3 sort.py -a heapsort -m alphabetical -f 1\ primeira\ entrada.txt') 
+	print('----------------------------------------------------------------------')
+	print(name + ' is not valid!')
+	print('Usage Example:')
+	print('python3 sort.py -a heapsort -m alphabetical -f 1\ primeira\ entrada.txt')
 
 import argparse,sys
 def menu(argv):
@@ -55,14 +55,17 @@ def menu(argv):
 		sys.exit(2)
 
 	if args.method is None:
-		print('You need to set a file!')
+		print('You need to set the array arrangement!')
 		print('Example:')
-		print('-Readme.txt')
+		print('-random')
+		print('-ascendant')
+		print('-desce')
 
 		how_to_use()
 		sys.exit(2)
 
 	return args
+
 def create_algorithm(algorithm):
 
 	if algorithm == 'insertionsort' or algorithm == 'insertsort':
@@ -79,7 +82,7 @@ def create_algorithm(algorithm):
 
 	elif algorithm == 'shellsort':
 		return ShellSort()
-	
+
 	elif algorithm == 'binaryinsertionsort' or algorithm == 'binaryinsertsort':
 		return BinaryInsertionSort()
 
@@ -94,23 +97,21 @@ def create_algorithm(algorithm):
 		sys.exit(2)
 
 if __name__ == "__main__":
-	
+
 	# Get user's arguments
 	arguments = menu(sys.argv[1:])
-	
+
 	# Get a string for each argument
 	algorithm = arguments.algorithm.lower()
 
-	filename = arguments.file.lower()
+	filename = arguments.file.lower() # Missing validations
 
-	method = arguments.method.lower()
+	method = arguments.method.lower() # Missing validation
 
-	# Creat a sort algorithm object 
+	# Creat a sort algorithm object
 	algorithm = create_algorithm(algorithm)
-	
-	# Set it's atributes and sort 
+
+	# Set it's atributes and sort
 	algorithm.method = method
 	algorithm.file = filename
 	algorithm.sort(duplicates=False)
-	## NEED TO CHECK THE METHOD IF IT'S VALID AND FILE AS WELL
-
