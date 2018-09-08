@@ -28,7 +28,7 @@ class AbstractSortClass():
 			# Store all words and theirs duplicates
 			for key,values in dictionary.items():
 				for i in range(values):
-					array.append(key)			
+					array.append(key)
 		else:
 
 			# Store all words whithout duplicates
@@ -138,7 +138,7 @@ class InsertionSort(AbstractSortClass):
 
 		# Loop through the entire array
 		for current_foward in range( 1, len(array) ):
-			
+
 			# Go on each element before the current
 			current_backwards = current_foward
 
@@ -149,8 +149,8 @@ class InsertionSort(AbstractSortClass):
 				this = array[current_backwards-1]
 				that = array[current_backwards]
 				# Do it whithout going out of the array boundery
-				while current_backwards > 0 and utilities.this_word_comes_first_than_that(this,that,n=n):
-						
+				while current_backwards > 0 and utilities.this_number_comes_first_than_that(this,that):
+
 					# Swap the words
 
 					i = current_backwards
@@ -165,7 +165,7 @@ class InsertionSort(AbstractSortClass):
 					that = array[current_backwards]
 			else:
 
-				# Check which number is smaller first 
+				# Check which number is smaller first
 				numberA = array[current_foward]
 
 				# Go on each element before the current
@@ -179,7 +179,7 @@ class InsertionSort(AbstractSortClass):
 
 					# Go one step to the left
 					current_backwards -= 1
-				
+
 				# Swap the numbers
 				array[current_backwards+1] = numberA
 	# Sort an array using Insertion Sort
@@ -187,7 +187,7 @@ class InsertionSort(AbstractSortClass):
 
 		# Loop through the entire array
 		for current_foward in range( left, right ):
-			
+
 			# Go on each element before the current
 			current_backwards = current_foward
 
@@ -198,8 +198,8 @@ class InsertionSort(AbstractSortClass):
 				this = array[current_backwards-1]
 				that = array[current_backwards]
 				# Do it whithout going out of the array boundery
-				while current_backwards > 0 and utilities.this_word_comes_first_than_that(this,that,n=n):
-						
+				while current_backwards > 0 and utilities.this_number_comes_first_than_that(this,that):
+
 					# Swap the words
 
 					i = current_backwards
@@ -214,7 +214,7 @@ class InsertionSort(AbstractSortClass):
 					that = array[current_backwards]
 			else:
 
-				# Check which number is smaller first 
+				# Check which number is smaller first
 				numberA = array[current_foward]
 
 				# Go on each element before the current
@@ -228,7 +228,7 @@ class InsertionSort(AbstractSortClass):
 
 					# Go one step to the left
 					current_backwards -= 1
-				
+
 				# Swap the numbers
 				array[current_backwards+1] = numberA
 
@@ -240,10 +240,10 @@ class HeapSort(AbstractSortClass):
 
 	def heapify(self, array, array_size, i, alphabetical=True):
 		# Supose that the root is the largest (We check this later)
-		largest = i  
-		left_index = 2 * i + 1     
-		right_index = 2 * i + 2     
-	 
+		largest = i
+		left_index = 2 * i + 1
+		right_index = 2 * i + 2
+
 		# Check if we're inside the array boundery
 		if left_index < array_size or right_index < array_size:
 
@@ -253,7 +253,7 @@ class HeapSort(AbstractSortClass):
 				# See if left child of root exists and is greater than it's parent
 				if left_index < array_size and utilities.this_word_comes_first_than_that(array[left_index],array[i]):
 					largest = left_index
-			 
+
 				# See if right child of root exists and is greater than it's parent
 				if right_index < array_size and utilities.this_word_comes_first_than_that(array[right_index],array[largest]):
 					largest = right_index
@@ -262,27 +262,27 @@ class HeapSort(AbstractSortClass):
 				# See if left child of root exists and is smaller than it's parent
 				if left_index < array_size and array[i] > array[left_index]:
 					largest = left_index
-				
+
 				# See if right child of root exists and is smaller than it's parent
 				if right_index < array_size and array[largest] > array[right_index]:
 					largest = right_index
-	 
+
 		# Change root, if needed
 		if largest != i:
 
 			# Swap items
-			array[i],array[largest] = array[largest],array[i]  
-			
+			array[i],array[largest] = array[largest],array[i]
+
 		    # Heapify the parent, until it's no longer required.
 			self.heapify(array, array_size, largest)
-	 
+
 	# The main function to sort an array of given size
 	def sort_array(self, array):
 		array_size = len(array)
 
 		# Build a maxheap.
 		self.build_max_heap(array,array_size)
-	 
+
 		# One by one extract elements
 		for i in range(array_size-1, 0, -1):
 			array[i], array[0] = array[0], array[i]   # swap
@@ -293,7 +293,7 @@ class ShellSort(AbstractSortClass):
 	def sort_array(self, array):
 		size=len(array)-1
 		gap=1
-		
+
 		# Start gap with a size greater then array size
 		while gap < size:
 			gap=(gap*3)+1
@@ -309,14 +309,14 @@ class ShellSort(AbstractSortClass):
 					while j >= gap and utilities.this_word_comes_first_than_that(array[int(j-gap)], value):
 						array[j] = array[int(j - gap)]
 						j = int(j - gap)
-	                    #Atualiza o valor de h             
+	                    #Atualiza o valor de h
 					array[j] = value
 				else:
 					#Percorre a array nas posiÃ§Ãµes i e j, na distÃ¢ncia h atÃ© o final do vetor
 					while j >= gap and value > array[int(j-gap)]:
 						array[j] = array[int(j - gap)]
 						j = int(j - gap)
-	                    #Atualiza o valor de h             
+	                    #Atualiza o valor de h
 					array[j] = value
 
 class SelectionSort(AbstractSortClass):
@@ -326,7 +326,7 @@ class SelectionSort(AbstractSortClass):
 
 		# Loop through the entire array
 		for cur_main_index in range( ( len(array) - 1 ) ):
-			
+
 			# Go on each element after the current
 			for possible_swap_index in range( (cur_main_index + 1) , len(array)):
 
@@ -364,18 +364,18 @@ class BinaryInsertionSort(AbstractSortClass):
 
 	# Sort an array using Selection Sort
 	def sort_array(self, array):
-		
+
 		# Loop through the entire array
 		for current_foward in range( 1, len(array) ):
-			
-			
+
+
 			# Find where insert the current word
 			index_to_insert = self.binary_search(array,0, current_foward-1,array[current_foward])
 
 			# Save a copy from the element to insert
 			element = array[current_foward]
 
-			# Go on each element before the current			
+			# Go on each element before the current
 			for current_backwards in range(current_foward-1,index_to_insert-1,-1):
 				array[current_backwards+1] = array[current_backwards]
 
@@ -384,7 +384,7 @@ class BinaryInsertionSort(AbstractSortClass):
 
 import math,random
 class IntroSort(AbstractSortClass):
-	
+
 
 	def sort_array(self, array):
 		max_depth = math.log(len(array),2)
@@ -403,7 +403,7 @@ class IntroSort(AbstractSortClass):
 		else:
 			self.introsort(array[0:p], max_depth - 1)
 			self.introsort(array[p+1:n], max_depth - 1)
-	
+
 	# Select the pivot
 	def partition(self, array, start, end):
 		pivot = end
@@ -439,7 +439,7 @@ class QuickSort(AbstractSortClass):
 		left_index=left_index+1
 
 		while right_index > left_index:
-			
+
 			# Verify if it's a number or a word
 			if type(array[right_index]) is not int:
 
@@ -496,28 +496,28 @@ class TimSort(AbstractSortClass):
 			return left
 		# Verify if it's a number or a word
 		if type(left[0]) is not int:
-			# Do a default merge sort 
+			# Do a default merge sort
 			if utilities.this_word_comes_first_than_that(left[0], right[0]):
-				return [left[0]] + self.merge(left[1:], right)          
+				return [left[0]] + self.merge(left[1:], right)
 		else:
-			# Do a default merge sort 
+			# Do a default merge sort
 			if left[0] < right[0]:
 				return [left[0]] + self.merge(left[1:], right)
 		return [right[0]] + self.merge(left, right[1:])
 
 	def min(self,a,b):
 		if a < b:
-			return a 
+			return a
 		return b
 
 	def sort_array(self, array):
 		run = 32
-		for left in range(0,len(array),run): 
+		for left in range(0,len(array),run):
 			insertionSort = InsertionSort()
 			insertionSort.sort_array_tim(array, left, self.min((left+31),(len(array)-1)))
-		size = run 
+		size = run
 		while size < len(array):
-			left = 0 
+			left = 0
 			while left < len(array):
 				mid = left + size - 1;
 				right = self.min((left + 2*size - 1), (len(array)-1))
