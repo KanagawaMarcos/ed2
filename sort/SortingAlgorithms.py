@@ -7,9 +7,9 @@ class AbstractSortClass():
 	file = ''
 	execution_time = -1
 
-	def print_words(self,array):
-		for word in array:
-			print(word)
+	def print_items(self,array):
+		for key in array:
+			print(key)
 
 	def load_file_to_dictionary(self, duplicates=True):
 		# Get all words and store them in a dictionary | Key = word, Value = occurrences
@@ -24,7 +24,6 @@ class AbstractSortClass():
 		# Get all words and put them in an unsorted array
 		array = []
 		if duplicates:
-
 			# Store all words and theirs duplicates
 			for key,values in dictionary.items():
 				for i in range(values):
@@ -38,7 +37,7 @@ class AbstractSortClass():
 
 	# Returns the index where this searched item is
 	def binary_search(self, array, left, right, value):
-		# ???????
+
 		if left == right:
 			if type(array[left]) is not int:
 				if utilities.this_word_comes_first_than_that(array[left], value):
@@ -50,7 +49,7 @@ class AbstractSortClass():
 					return left+1
 				else:
 					return left
-		# ????????
+
 		if left > right:
 			return left
 
@@ -82,6 +81,7 @@ class AbstractSortClass():
 			# If we ge here, so this element is not in this array, return where it stopped
 			else:
 				return middle
+
 	def sort(self,n=4,duplicates=True):
 
 		if self.method == 'alphabetical':
@@ -98,7 +98,7 @@ class AbstractSortClass():
 			self.execution_time = time.time()-start_time
 
 			# Print all words sorted in the screen
-			self.print_words(array)
+			self.print_items(array)
 
 			# And it's execution time
 			print('Execution Time (Seconds): ' + str(self.execution_time))
@@ -126,7 +126,7 @@ class AbstractSortClass():
 			self.execution_time = time.time()-start_time
 
 			# Print all words sorted in the screen
-			self.print_words(occurrences)
+			self.print_items(occurrences)
 
 			# And it's execution time
 			print('Execution Time (Seconds): ' + str(self.execution_time))
@@ -137,7 +137,7 @@ class InsertionSort(AbstractSortClass):
 	def sort_array(self, array,n=4,limit=0):
 
 		# Loop through the entire array
-		for current_foward in range( 1, len(array) ):
+		for current_foward in range(s1, len(array)):
 
 			# Go on each element before the current
 			current_backwards = current_foward
@@ -152,7 +152,6 @@ class InsertionSort(AbstractSortClass):
 				while current_backwards > 0 and utilities.this_number_comes_first_than_that(this,that):
 
 					# Swap the words
-
 					i = current_backwards
 					j = (current_backwards - 1)
 
